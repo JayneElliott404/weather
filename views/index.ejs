@@ -16,14 +16,14 @@
 
 
 <body>
-    <h1>The current temperature in <%= place %> is <%= temperature %>°C</h1>
-    <h2 class="feelsLike">Feels like <%= feelsLike %>°C</h2>
-    <h2>Weather description: <%= description %>
+    <div class="container">
+        <h1>The current temperature in <%= place %> is <%= temperature %>°C</h1>
+        <h2 class="feelsLike">Feels like <%= feelsLike %>°C</h2>
+        <h2>Weather description: <%= description %></h2>
         <h2>Wind speed: <%= windSpeedMph %> mph</h2>
-    </h2>
 
-    <img src="https://openweathermap.org/img/wn/<%= icon %>@4x.png" alt="weather">
-
+        <img src="https://openweathermap.org/img/wn/<%= icon %>@4x.png" alt="weather">
+    </div>
 </body>
 
 </html>
