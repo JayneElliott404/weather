@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="icon" href="images/weather-icon-png.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Sacramento&display=swap"
+        rel="stylesheet">
+
+</head>
+
+
+<body>
+    <h1>The current temperature in <%= place %> is <%= temperature %>°C</h1>
+    <h2 class="feelsLike">Feels like <%= feelsLike %>°C</h2>
+    <h2>Weather description: <%= description %>
+        <h2>Wind speed: <%= windSpeedMph %> mph</h2>
+    </h2>
+
+    <img src="https://openweathermap.org/img/wn/<%= icon %>@4x.png" alt="weather">
+
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+body {
+    background-color: #e8d3c4;
+    margin: 0;
+    text-align: center;
+  }
+
+h1 {
+    margin: 80px 200px 40px 200px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4rem;
+    font-weight: 600;
+    color: #a25623;
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    color: #180f09;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.feelsLike {
+    color: #b86025;
+    font-size: 3rem;
+    font-weight: 600;
+}
