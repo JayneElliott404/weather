@@ -1,24 +1,22 @@
-const express = require("express")
-const path = require("path")
-const getWeather = require("./get-weather")
+import express from "express";
+import getWeather from "./get-weather.js"
 
 const app = express()
+const port = 3000
 
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static("public"))
 
 
-app.get("/", function (req, res) {
-    getWeather(function (weather) {
+app.get("/", async (req, res) => {
+    try {
+        const weather = await getWeather()
         res.render("index.ejs", weather)
-    })
+    } catch (error) {
+        console.log(error)
+        res.status(500).send(error.message)
+    }
 })
 
-// app.get("/weather", function (req, res) {
-//     getWeather(function (weather) {
-//         res.send(weather)
-//     })
-// })
-
-app.listen(3000, function () {
-    console.log("Server is running on port 3000")
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`)
 })
