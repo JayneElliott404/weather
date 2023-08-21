@@ -1,4 +1,5 @@
 import axios from "axios";
+import moment from "moment"
 
 async function getWeather() {
     const url = "https://api.openweathermap.org/data/2.5/weather?lat=54.92&lon=-1.74&appid=06ad7a2573a88b937cfd62fb09644957&units=metric"
@@ -21,9 +22,12 @@ async function getWeather() {
     const forecasts = []
 
     for (let i = 0; i < forecastResponse.data.list.length; i++) {
-        const date = forecastResponse.data.list[i].dt_txt.split(" ")[0]
-        const dayNumber = new Date(date).getDay()
-
+        const dateText = forecastResponse.data.list[i].dt_txt.split(" ")[0]
+        const dayNumber = new Date(dateText).getDay()
+        const dateSplit = dateText.split("-")
+        dateSplit.reverse()
+        const date = `${dateSplit[0]} ${dateSplit[1]}`
+       
         let day
 
         switch (dayNumber) {
