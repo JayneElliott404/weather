@@ -17,59 +17,68 @@
 
 <body>
     <div class="container text-center">
-        <h1>The current temperature in <%= location %> is <%= temperature %>°C</h1>
-        <h2 class="feelsLike">Feels like <%= feelsLike %>°C</h2>
-        <h2>Weather description: <%= description %>
-        </h2>
+        <h1 class="mb-4">The current temperature in <%= location %> is <%= temperature %>°C</h1>
+        <h2 class="feelsLike mb-4">Feels like <%= feelsLike %>°C</h2>
+        <h2 class="mb-4">Weather description: <%= description %></h2>
         <h2>Wind speed: <%= windSpeedMph %> mph</h2>
-
         <img src="https://openweathermap.org/img/wn/<%= icon %>@4x.png" alt="weather">
 
 
-
-        <div class="tab">
-            <%forecasts.forEach((dailyForecast)=> { %>
-                <button class="tablinks" onclick="selectDay(event, '<%=dailyForecast.day%>')">
-                    <%=dailyForecast.day%><br>
-                        <%=dailyForecast.date%>
-                </button>
-                <% }) %>
+        <div class="row">
+            <ul class="nav nav-pills nav-justified" role="tablist">
+                <%forecasts.forEach((dailyForecast)=> { %>
+                    <div class="col-4">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" data-bs-toggle="tab" href="#<%=dailyForecast.day%>" aria-selected="true"
+                                role="tab">
+                                <%=dailyForecast.day%><br>
+                                    <%=dailyForecast.date%>
+                            </a>
+                        </li>
+                    </div>
+                    <% }) %>
+            </ul>
         </div>
 
         <!-- Tab content -->
-        <%forecasts.forEach((dailyForecast)=> { %>
-            <div id="<%=dailyForecast.day%>" class="tabcontent">
+        <div id="myTabContent" class="tab-content">
+            <%forecasts.forEach((dailyForecast)=> { %>
+                <div class="tab-pane fade" id="<%=dailyForecast.day%>" role="tabpanel">
 
-                <div class="row">
-                    <%dailyForecast.hourlyForecasts.forEach((hour)=> { %>
-                        <div class="col-4 col-md-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <%=hour.time%>
-                                    </h5>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                     Temp: <%=hour.temperature%>°C
-                                    </li>
-                                    <li class="list-group-item">
-                                       Feels like: <%=hour.feelsLike%>°C
-                                    </li>
-                                    <li class="list-group-item">
-                                      Wind speed: <%=hour.windSpeed%>
-                                    </li>
-                                </ul>
-                                <div class="card-body">
-                                    <img src="https://openweathermap.org/img/wn/<%= hour.icon %>@2x.png" alt="weather">
-                                    <p class="card-text"><%=hour.description%></p>
+                    <div class="row gx-1">
+                        <%dailyForecast.hourlyForecasts.forEach((hour)=> { %>
+                            <div class="col-6 col-md-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <%=hour.time%>
+                                        </h5>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            Temp: <%=hour.temperature%>°C
+                                        </li>
+                                        <li class="list-group-item">
+                                            Feels like: <%=hour.feelsLike%>°C
+                                        </li>
+                                        <li class="list-group-item">
+                                            Wind speed: <%=hour.windSpeed%>
+                                        </li>
+                                    </ul>
+                                    <div class="card-body">
+                                        <img src="https://openweathermap.org/img/wn/<%= hour.icon %>@2x.png"
+                                            alt="weather">
+                                        <p class="card-text">
+                                            <%=hour.description%>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <% }) %>
+                            <% }) %>
+                    </div>
                 </div>
-            </div>
-            <% }) %>
+                <% }) %>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -78,6 +87,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
         integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
         crossorigin="anonymous"></script>
-    <script src="js/refresh.js"></script>
 </body>
+
 </html>

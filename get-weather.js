@@ -26,31 +26,31 @@ async function getWeather() {
         const dayNumber = new Date(dateText).getDay()
         const dateSplit = dateText.split("-")
         dateSplit.reverse()
-        const date = `${dateSplit[0]} ${dateSplit[1]}`
+        const date = dateSplit[0]
        
         let day
 
         switch (dayNumber) {
             case 0:
-                day = "Sunday"
+                day = "Sun"
                 break;
             case 1:
-                day = "Monday"
+                day = "Mon"
                 break;
             case 2:
-                day = "Tuesday"
+                day = "Tue"
                 break;
             case 3:
-                day = "Wednesday"
+                day = "Wed"
                 break;
             case 4:
-                day = "Thursday"
+                day = "Thur"
                 break;
             case 5:
-                day = "Friday"
+                day = "Fri"
                 break;
             case 6:
-                day = "Saturday"
+                day = "Sat"
             default:
                 break;
         }
