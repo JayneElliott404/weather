@@ -27,7 +27,7 @@ async function getWeather() {
         const dateSplit = dateText.split("-")
         dateSplit.reverse()
         const date = dateSplit[0]
-       
+
         let day
 
         switch (dayNumber) {
@@ -59,10 +59,11 @@ async function getWeather() {
             forecasts.push({ day, date, hourlyForecasts: [] })
         }
 
+        const timeSplit = forecastResponse.data.list[i].dt_txt.split(" ")[1].split(":")
         const hourData = {
             day,
             date,
-            time: forecastResponse.data.list[i].dt_txt.split(" ")[1],
+            time: `${timeSplit[0]}:${timeSplit[1]}`,
             temperature: forecastResponse.data.list[i].main.temp,
             feelsLike: forecastResponse.data.list[i].main.feels_like,
             description: forecastResponse.data.list[i].weather[0].description,
