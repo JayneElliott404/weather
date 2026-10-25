@@ -2,8 +2,9 @@ import axios from "axios";
 import moment from "moment"
 
 async function getWeather() {
-    const url = "https://api.openweathermap.org/data/2.5/weather?lat=54.92&lon=-1.74&appid=06ad7a2573a88b937cfd62fb09644957&units=metric"
-    const forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=54.92&lon=-1.74&appid=06ad7a2573a88b937cfd62fb09644957&units=metric"
+    const apiKey = process.env.API_KEY
+    const url = "https://api.openweathermap.org/data/2.5/weather?lat=54.92&lon=-1.74&appid=" + apiKey + "&units=metric"
+    const forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=54.92&lon=-1.74&appid=" + apiKey + "&units=metric"
 
 
     const response = await axios.get(url)
@@ -14,7 +15,6 @@ async function getWeather() {
     const location = response.data.name
     const icon = response.data.weather[0].icon
     const windSpeedMph = convertToMph(windSpeed)
-
 
 
     const forecastResponse = await axios.get(forecastUrl)
